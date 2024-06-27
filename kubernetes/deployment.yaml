@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kubernetes
+  namespace: default
+  labels:
+    app: hello-kubernetes
+spec:
+  selector:
+    matchLabels:
+      app: hello-kubernetes
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: app
+      labels:
+        app: hello-kubernetes
+    spec:
+      containers:
+        - name: app
+          image: docker.io/paulbouwer/hello-kubernetes:1.10
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: NPM_CONFIG_CACHE
+              value: /tmp/.npm
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 500m
+            limits:
+              memory: 128Mi
+              cpu: 500m
+          securityContext:
+            runAsUser: 65534
+            runAsGroup: 65534
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
