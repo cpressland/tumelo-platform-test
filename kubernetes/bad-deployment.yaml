@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deploy
+metadata:
+  name: tumeloapp-deployment
+  labels:
+    app: tumeloapp
+spec:
+  containers:
+    - name: tumeloapp
+      image: paulbouwer/hello-kubernetes:latest
+      ports:
+        - containerPort: 8080
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "500m"
+        limits:
+          memory: "64Mi"
+          cpu: "500m"

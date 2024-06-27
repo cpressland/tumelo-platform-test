@@ -1,0 +1,13 @@
+Two challenges are included in the zip: one related to kubernetes and another related to terraform. You must create a private repository on GitHub to upload all the contents of the zip, so first you will have to unzip it and then make a first commit. 
+
+Follow the next steps:
+
+1. Unzip the attached zip file
+2. Create a private GitHub repository
+3. Push first commit with the all the files of the zip extracted in the first step
+4. Read the attached README.md file where you will find the necessary instructions for the two challenges
+
+When you finish, remember to:
+
+1. Give read access to TumeloTechTask account to the private repository (Settings > Access > Collaborators)
+2. Let us know by email that you have finished the test and send us the URL of the repository
